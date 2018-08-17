@@ -3,6 +3,7 @@ package com.skilldistillery.film.entities;
 import java.util.List;
 
 public class Film {
+<<<<<<< HEAD
 	private int id;
 	private String title;
 	private String description;
@@ -242,4 +243,8 @@ public class Film {
 		this.actors = actors;
 	}
 
+=======
+	private int filmId;
+	//TODO - replace with Film glass from homework
+>>>>>>> 60636b4f046ffbb7a73321eaf0195be094c8d201
 }
