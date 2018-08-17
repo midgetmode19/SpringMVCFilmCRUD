@@ -1,4 +1,4 @@
-package com.skilldistillery.film.entities;
+package com.skilldistillery.film.controllers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.DatabaseAccessor;
 import com.skilldistillery.film.entities.Film;
 
 public class DatabaseAccessorObject implements DatabaseAccessor {
