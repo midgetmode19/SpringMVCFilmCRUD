@@ -39,15 +39,23 @@
 		</select> <br> Rental Rate<br>
 		<select class="custom-select" name="rentalRate">
 			<option selected>Rental Rate</option>
-			<option value="1">$0.99</option>
-			<option value="2">$2.99</option>
-			<option value="3">$4.99</option>
+			<option value="0.99">$0.99</option>
+			<option value="2.99">$2.99</option>
+			<option value="4.99">$4.99</option>
 		</select> <br>Film Length (in minutes)<br>
 		<input type="text" name="length" value="120"/> <br>Replacement Cost<br>
 		<input type="text" name="replacementCost" value="7.99"/> <br> Rating(G, PG,
 		PG-13, R, NC-17)<br>
 		<input type="text" name="rating" value="R"/><br>
-		<br> Special Features<br><input type="text" name="specialFeatures" value="Deleted Scenes"/><br>
+		<br> Special Features<br>
+		<select class="custom-select" name="specialFeatures">
+			<option selected>Special Features</option>
+			<option value="Deleted Scenes">Deleted Scenes</option>
+			<option value="Behind the Scenes">Behind the Scenes</option>
+			<option value="Commentaries">Commentaries</option>
+			<option value="Trailers">Trailers</option>
+		</select>
+<br>
 		<button type="submit" class="btn btn-primary btn-sm" value="Submit">Submit</button>
 	</form>
 </body>
