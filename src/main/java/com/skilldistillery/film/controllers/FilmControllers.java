@@ -48,5 +48,15 @@ public class FilmControllers {
 	public String filmView() {
 		return "filmAddResult";
 	}
+	
+	@RequestMapping(path = "removeFilm.do", params = "filmId", method = RequestMethod.POST)
+	public ModelAndView deleteFilmById (int filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		boolean deletedFilm = dao.deleteFilmById(filmId);
+		mv.addObject("succeeded", deletedFilm);
+		mv.setViewName("filmDeleteResult");
+		return mv;
+	}
+
 
 }

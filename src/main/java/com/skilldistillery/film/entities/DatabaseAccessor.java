@@ -13,4 +13,5 @@ public interface DatabaseAccessor {
   public List<Film> getFilmsByActorId(int actorId);
   public List<Film> getFilmsBySearchKeyWord(String keyWord);
   public void addFilm(Film film);
+  public boolean deleteFilmById(int filmId);
 }

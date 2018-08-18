@@ -38,22 +38,23 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (filmResult.next()) {
 				film = new Film();// Create the object
 				// Here is our mapping of query columns to our object fields:
-//				film.setTitle(filmResult.getString(1));
-//				film.setDescription(filmResult.getString(2));
-//				film.setReleaseYear(filmResult.getInt(3));
-//				film.setRating(filmResult.getString(4));
-//				film.setLanguage(filmResult.getString(5));
-				film.setId(filmResult.getInt(1));
-				film.setTitle(filmResult.getString(2));
-				film.setDescription(filmResult.getString(3));
-				film.setReleaseYear(filmResult.getInt(4));
-				film.setLanguageID(filmResult.getInt(5));
-				film.setRentalDuration(filmResult.getInt(6));
-				film.setRentalRate(filmResult.getDouble(7));
-				film.setLength(filmResult.getInt(8));
-				film.setReplacementCost(filmResult.getDouble(9));
-				film.setRating(filmResult.getString(10));
-				film.setSpecialFeatures(filmResult.getString(11));
+				film.setTitle(filmResult.getString(1));
+				film.setDescription(filmResult.getString(2));
+				film.setReleaseYear(filmResult.getInt(3));
+				film.setRating(filmResult.getString(4));
+				film.setLanguage(filmResult.getString(5));
+				film.setId(filmId);
+//				film.setId(filmResult.getInt(1));
+//				film.setTitle(filmResult.getString(2));
+//				film.setDescription(filmResult.getString(3));
+//				film.setReleaseYear(filmResult.getInt(4));
+//				film.setLanguageID(filmResult.getInt(5));
+//				film.setRentalDuration(filmResult.getInt(6));
+//				film.setRentalRate(filmResult.getDouble(7));
+//				film.setLength(filmResult.getInt(8));
+//				film.setReplacementCost(filmResult.getDouble(9));
+//				film.setRating(filmResult.getString(10));
+//				film.setSpecialFeatures(filmResult.getString(11));
 
 				film.setActors(getActorsByFilmId(filmId)); // A Film has actors
 			}
@@ -236,5 +237,28 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 //		return film;
 	}
+	public boolean deleteFilmById(int filmId) {
+		  Connection conn = null;
+		  try {
+		    conn = DriverManager.getConnection(URL, user, pass);
+		    conn.setAutoCommit(false); // START TRlANSACTION
+		    String sql = "DELETE FROM film WHERE id = ?";
+		    PreparedStatement stmt = conn.prepareStatement(sql);
+		    stmt.setInt(1, filmId);
+		    int updateCount = stmt.executeUpdate();
+		    conn.commit();             // COMMIT TRANSACTION
+		  }
+		  catch (SQLException sqle) {
+		    sqle.printStackTrace();
+		    if (conn != null) {
+		      try { conn.rollback(); }
+		      catch (SQLException sqle2) {
+		        System.err.println("Error trying to rollback");
+		      }
+		    }
+		    return false;
+		  }
+		  return true;
+		}
 
 }

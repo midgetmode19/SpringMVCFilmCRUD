@@ -12,12 +12,11 @@
   <c:choose>
     <c:when test="${! empty film}">
       <ul>
+        <li>${film.id }</li>
         <li>${film.title}</li>
         <li>${film.description}</li>
         <li>${film.releaseYear}</li>
         <li>${film.rating}</li>
-       
-     
       </ul>
     </c:when>
     <c:otherwise>
@@ -25,5 +24,9 @@
     </c:otherwise>
   </c:choose>
   <a href="index.html">Return to Main Menu</a>
+  <form action="removeFilm.do" method="POST">
+ To delete this film type the film ID:<input type="text" name="filmId">
+ <button type="submit" class="btn btn-primary btn-sm" value="Submit">Delete This Film</button>
+ </form>
 </body>
 </html>
