@@ -186,8 +186,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	}
 
-	public Film addFilm(Film film) {
-		System.out.println("My film is " + film);
+	public void addFilm(Film film) {
+	
 		Connection conn = null;
 		String sql = "INSERT INTO film (title, description, release_year, language_id)" + "VALUES(?, ?, ?, ?);";
 		try {
@@ -195,7 +195,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			conn.setAutoCommit(false);
 			st.setString(1, film.getTitle());
-			System.out.println(film.getTitle());
 			st.setString(2, film.getDescription());
 			st.setInt(3, film.getReleaseYear());
 			st.setString(4, film.getRating());
@@ -204,16 +203,13 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			int uc = st.executeUpdate();
 
 			if (uc != 1) {
-				System.out.println("This sucks i'm going home bye");
-				return null;
+				
+//				return null;
 			}
-			System.out.println(uc + " film records created.");
 			ResultSet keys = st.getGeneratedKeys();
 			if (keys.next()) {
 				int filmId = keys.getInt(1);
 				film.setId(filmId);
-				System.out.println("Film ID: " + filmId);
-				System.out.println("New film ID for " + film);
 
 			}
 			conn.commit();
@@ -233,7 +229,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 		}
 
-		return film;
+//		return film;
 	}
 
 }

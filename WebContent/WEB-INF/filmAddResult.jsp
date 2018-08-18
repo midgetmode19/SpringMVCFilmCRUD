@@ -6,22 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>The result of your query:</title>
+<title>Film successfully added</title>
 </head>
 <body>
   <c:choose>
     <c:when test="${! empty film}">
-      <ul>
-        <li>${film.title}</li>
-        <li>${film.description}</li>
-        <li>${film.releaseYear}</li>
-        <li>${film.rating}</li>
-       
-     
-      </ul>
+      <p>Film successfully added</p>
     </c:when>
     <c:otherwise>
-      <p>No films found</p>
+      <p>Failed to add film</p>
     </c:otherwise>
   </c:choose>
   <a href="index.html">Return to Main Menu</a>
