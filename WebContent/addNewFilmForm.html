@@ -10,13 +10,44 @@
 </head>
 <body>
 	<form action="AddFilm.do" method="POST">
-		
-		<input type="text" name="title" /><br> Title<br>
-		<input type="text" name="description" /><br> Description<br>
-		<input type="text" name="releaseYear" /><br> Release Year<br>
-		<input type="text" name="rating" /><br> Rating(G, PG, PG-13, R,
-		NC-17)<br>
-	
+
+		<br> Title<br>
+		<input type="text" name="title" value="Joe"/> <br> Description<br>
+		<input type="text" name="description" value="Dirt"/> <br> Release Year<br>
+		<input type="text" name="releaseYear" value="1999"/> 
+		 
+		<select class="custom-select" name="languageID">
+			<option selected>Language Id</option>
+			<option value="1">English</option>
+			<option value="2">Italian</option>
+			<option value="3">Japanese</option>
+			<option value="4">Mandarin</option>
+			<option value="5">French</option>
+			<option value="6">German</option>
+		</select> <br> Rental Duration<br>
+		 
+		<select
+			class="custom-select" name="rentalDuration">
+			<option selected>Rental Duration</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select> <br> Rental Rate<br>
+		<select class="custom-select" name="rentalRate">
+			<option selected>Rental Rate</option>
+			<option value="1">$0.99</option>
+			<option value="2">$2.99</option>
+			<option value="3">$4.99</option>
+		</select> <br>Film Length (in minutes)<br>
+		<input type="text" name="length" value="120"/> <br>Replacement Cost<br>
+		<input type="text" name="replacementCost" value="7.99"/> <br> Rating(G, PG,
+		PG-13, R, NC-17)<br>
+		<input type="text" name="rating" value="R"/><br>
+		<br> Special Features<br><input type="text" name="specialFeatures" value="Deleted Scenes"/><br>
 		<button type="submit" class="btn btn-primary btn-sm" value="Submit">Submit</button>
 	</form>
 </body>

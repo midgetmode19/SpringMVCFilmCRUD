@@ -38,22 +38,22 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (filmResult.next()) {
 				film = new Film();// Create the object
 				// Here is our mapping of query columns to our object fields:
-				film.setTitle(filmResult.getString(1));
-				film.setDescription(filmResult.getString(2));
-				film.setReleaseYear(filmResult.getInt(3));
-				film.setRating(filmResult.getString(4));
-				film.setLanguage(filmResult.getString(5));
-//				film.setId(filmResult.getInt(1));
-//				film.setTitle(filmResult.getString(2));
-//				film.setDescription(filmResult.getString(3));
-//				film.setReleaseYear(filmResult.getInt(4));
-//				film.setLanguageID(filmResult.getInt(5));
-//				film.setRentalDuration(filmResult.getInt(6));
-//				film.setRentalRate(filmResult.getDouble(7));
-//				film.setLength(filmResult.getInt(8));
-//				film.setReplacementCost(filmResult.getDouble(9));
-//				film.setRating(filmResult.getString(10));
-//				film.setSpecialFeatures(filmResult.getString(11));
+//				film.setTitle(filmResult.getString(1));
+//				film.setDescription(filmResult.getString(2));
+//				film.setReleaseYear(filmResult.getInt(3));
+//				film.setRating(filmResult.getString(4));
+//				film.setLanguage(filmResult.getString(5));
+				film.setId(filmResult.getInt(1));
+				film.setTitle(filmResult.getString(2));
+				film.setDescription(filmResult.getString(3));
+				film.setReleaseYear(filmResult.getInt(4));
+				film.setLanguageID(filmResult.getInt(5));
+				film.setRentalDuration(filmResult.getInt(6));
+				film.setRentalRate(filmResult.getDouble(7));
+				film.setLength(filmResult.getInt(8));
+				film.setReplacementCost(filmResult.getDouble(9));
+				film.setRating(filmResult.getString(10));
+				film.setSpecialFeatures(filmResult.getString(11));
 
 				film.setActors(getActorsByFilmId(filmId)); // A Film has actors
 			}
@@ -189,7 +189,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public void addFilm(Film film) {
 	
 		Connection conn = null;
-		String sql = "INSERT INTO film (title, description, release_year, language_id)" + "VALUES(?, ?, ?, ?);";
+		String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features)" + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -197,9 +197,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			st.setString(1, film.getTitle());
 			st.setString(2, film.getDescription());
 			st.setInt(3, film.getReleaseYear());
-			st.setString(4, film.getRating());
-			st.setInt(4, 1);
-
+			st.setInt(4, film.getLanguageID());
+			st.setInt(5, film.getRentalDuration());
+			st.setDouble(6, film.getRentalRate());
+			st.setInt(7, film.getLength());
+			st.setDouble(8, film.getReplacementCost());
+			st.setString(9, film.getRating());
+			st.setString(10, film.getSpecialFeatures());
+			
 			int uc = st.executeUpdate();
 
 			if (uc != 1) {
