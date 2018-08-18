@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>FilmQuery-servlet.xml</config>
+		<config>WebContent/WEB-INF/FilmQuery-servlet.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

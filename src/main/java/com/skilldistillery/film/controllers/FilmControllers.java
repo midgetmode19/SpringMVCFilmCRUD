@@ -9,11 +9,20 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.film.entities.DatabaseAccessor;
 import com.skilldistillery.film.entities.Film;
 
+
 @Controller
 public class FilmControllers {
 
 	@Autowired
 	private DatabaseAccessor dao;
+	
+//	public DatabaseAccessor getDAO() {
+//		return dao;
+//	}
+//
+	public void setDAO(DatabaseAccessor dao) {
+		this.dao = dao;
+	}
 
 	@RequestMapping(path = "findFilm.do", params = "filmId", method = RequestMethod.GET)
 	public ModelAndView getFilmById(int filmId) {

@@ -18,6 +18,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	String user = "student";
 	String pass = "student";
 
+	public DatabaseAccessorObject() throws ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+	}
+
 	@Override
 	public Film getFilmById(int filmId) {
 //		 Implement the getFilmById method that takes an int film ID, and returns a
@@ -196,9 +200,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			st.setInt(3, film.getReleaseYear());
 			st.setString(4, film.getRating());
 			st.setInt(4, 1);
-			
+
 			int uc = st.executeUpdate();
-			
+
 			if (uc != 1) {
 				System.out.println("This sucks i'm going home bye");
 				return null;
@@ -210,7 +214,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setId(filmId);
 				System.out.println("Film ID: " + filmId);
 				System.out.println("New film ID for " + film);
-				
+
 			}
 			conn.commit();
 
