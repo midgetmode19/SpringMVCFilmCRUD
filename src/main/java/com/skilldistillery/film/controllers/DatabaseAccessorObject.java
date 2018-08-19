@@ -182,7 +182,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				int filmId = rs.getInt(11);
 				List<Actor> actors = getActorsByFilmId(filmId); // use this when need to display actors
 				Film film = new Film(filmId, title, desc, releaseYear, language, rentalDuration, rentalRate, length,
-						replacementCost, rating, specialFeatures);
+						replacementCost, rating, specialFeatures, actors);
 				films.add(film);
 			}
 			rs.close();
