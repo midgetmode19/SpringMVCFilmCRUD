@@ -26,16 +26,16 @@
 
  
     </form>
-    <p>
+   <%-- <p>
     <form action="editFilm.jsp" method="POST" value="${film.id}"> 
 				
 	<input type="hidden" name="filmId" value="${film.id}">
 	<button type="submit" class="btn btn-primary btn-sm" value="Submit">Update this film?</button>
 	</form>
-	</p>
+	</p>  --%>
     
     
-			<%-- <p>
+			<p>
 				<form action="editFilm.do" method="POST" value="${film.id}"> 
 				
 				<input type="hidden" name="filmId" value="${film.id}">
@@ -80,7 +80,7 @@
 			<option value="Trailers">Trailers</option>
 		</select> <br>
 		<button type="submit" class="btn btn-primary btn-sm" value="Submit">Submit</button>
-	</form> --%>
+	</form>
 	
 			</p>
 			<form action="removeFilm.do" method="POST">
