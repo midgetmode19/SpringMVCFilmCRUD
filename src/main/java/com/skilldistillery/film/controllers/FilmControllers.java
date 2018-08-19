@@ -1,7 +1,10 @@
 package com.skilldistillery.film.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +30,7 @@ public class FilmControllers {
 	}
 
 	@RequestMapping(path = "findFilm.do", params = "filmId", method = RequestMethod.GET)
-	public ModelAndView getFilmById(int filmId) {
+	public ModelAndView getByFilmId(int filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film f = dao.getFilmById(filmId);
 		mv.addObject("film", f);
@@ -35,7 +38,7 @@ public class FilmControllers {
 		return mv;
 	}
 	@RequestMapping(path = "AddFilm.do", method = RequestMethod.POST)
-	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
+	public ModelAndView addFilmToDatabase(Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		dao.addFilm(film);
 		redir.addFlashAttribute("film", film);
@@ -50,11 +53,19 @@ public class FilmControllers {
 	}
 	
 	@RequestMapping(path = "removeFilm.do", params = "filmId", method = RequestMethod.POST)
-	public ModelAndView deleteFilmById (int filmId, RedirectAttributes redir) {
+	public ModelAndView removeFilmById (int filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		boolean deletedFilm = dao.deleteFilmById(filmId);
 		mv.addObject("succeeded", deletedFilm);
 		mv.setViewName("filmDeleteResult");
+		return mv;
+	}
+	@RequestMapping(path = "findFilmByKeyword.do", params ="keyWord", method = RequestMethod.GET)
+	public ModelAndView getFilmsByKeyword(String keyWord) {
+		ModelAndView mv = new ModelAndView();
+		List<Film> films = dao.getFilmsBySearchKeyWord(keyWord);
+		mv.addObject("films", films);
+		mv.setViewName("keywordResults");
 		return mv;
 	}
 

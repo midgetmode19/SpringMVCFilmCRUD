@@ -61,6 +61,22 @@ public class Film {
 
 	}
 
+
+	public Film(int id, String title, String description, int releaseYear, String language, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.language = language;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+	}
+
 	public String getLanguage() {
 		return language;
 	}
