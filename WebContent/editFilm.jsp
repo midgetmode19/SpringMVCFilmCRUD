@@ -10,10 +10,11 @@
 	crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Edit Film</title>
+
 </head>
 <body>
-
-	<h4>Current Film:</h4>
+<input type="hidden" name="filmId" value="${film.id}">
+	<h4>Current Film: ${film }</h4>
 	<ul>
 		<li>${film.id }</li>
 		<li>${film.title}</li>

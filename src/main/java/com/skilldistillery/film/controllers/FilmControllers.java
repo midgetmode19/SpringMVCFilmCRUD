@@ -69,7 +69,7 @@ public class FilmControllers {
 		return mv;
 	}
 
-	@RequestMapping(path = "updateFilm.do", params = "filmId", method = RequestMethod.POST)
+	@RequestMapping(path = "editFilm.do", params = "filmId", method = RequestMethod.POST)
 	public ModelAndView updateFilmId(int filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		boolean updatedFilm = dao.updateFilmById(filmId);
