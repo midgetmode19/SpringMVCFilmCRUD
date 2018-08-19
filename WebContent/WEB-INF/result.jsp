@@ -11,19 +11,18 @@
 <body>
 	<c:choose>
 		<c:when test="${! empty film}">
-			<ul>
-				<li>${film.id }</li>
-				<li>${film.title}</li>
-				<li>${film.description}</li>
-				<li>${film.releaseYear}</li>
-				<li>${film.language}</li>
-				<li>${film.rentalDuration}</li>
-				<li>${film.rentalRate}</li>
-				<li>${film.length}</li>
-				<li>${film.replacementCost}</li>
-				<li>${film.rating}</li>
-				<li>${film.specialFeatures}</li>
-			</ul>
+			<p><strong>Film Id:</strong> ${film.id }</p>
+			<p><strong>Title:</strong> ${film.title}</p>
+			<p><strong>Description:</strong> ${film.description}</p>
+			<p><strong>Release Year:</strong> ${film.releaseYear}</p>
+			<p><strong>Language:</strong> ${film.language}</p>
+			<p><strong>Rental Duration:</strong> ${film.rentalDuration}</p>
+			<p><strong>Rental Rate:</strong> ${film.rentalRate}</p>
+			<p><strong>Length:</strong> ${film.length}</p>
+			<p><strong>Replacement Cost:</strong> ${film.replacementCost}</p>
+			<p><strong>Rating:</strong> ${film.rating}</p>
+			<p><strong>Special Features:</strong> ${film.specialFeatures}</p>
+			
 
  
     </form>
@@ -61,7 +60,7 @@
 			<option value="4.99">$4.99</option>
 		</select> <br> Film Length (in minutes)<br> <input type="text"
 			name="length" /> <br> Replacement Cost<br> <input
-			type="text" name="replacementCost" /> <br> Rating(G, PG,PG-13,
+			type="text" name="replacementCost" /> <br> Rating(G, PG, PG-13,
 		R, NC-17)<br> <input type="text" name="rating" /><br> <br>
 		Special Features<br> <select class="custom-select"
 			name="specialFeatures">
