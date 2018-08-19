@@ -273,16 +273,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	public boolean updateFilmById(int filmId) {
 		Connection conn = null;
-		Film film = getFilmById(filmId); // Gets the film to be updated using ID user inputs
 
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
+			Film film = getFilmById(filmId); // Gets the film to be updated using ID user inputs
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film JOIN language ON (film.language_id = language.id) "
 					+ "SET film.title=?, film.description=?, film.release_year=?, film.language_id=?, film.rental_duration=?, film.rental_rate=?, film.length=?, film.replacement_cost=?, film.rating=?, film.special_features=? "
 					+ " WHERE film.id=?"; 
-			// language ID may cause an error? Set this using value (id) that corresponds to
-			// the language(name) in the language table
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());

@@ -80,7 +80,7 @@ public class FilmControllers {
 
 //	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
 //	public String filmUpdatedView() {
-//		return "filmDeleteResult"; // TODO: ***!!Change this if using a new jsp file to display updated film
+//		return "filmAddResult"; // TODO: ***!!Change this if using a new jsp file to display updated film
 //								// result!!****
 //	}
 
