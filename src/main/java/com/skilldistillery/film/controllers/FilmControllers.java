@@ -70,18 +70,18 @@ public class FilmControllers {
 	}
 
 	@RequestMapping(path = "editFilm.do", params = "filmId", method = RequestMethod.POST)
-	public ModelAndView updateFilmId(int filmId, RedirectAttributes redir) {
+	public ModelAndView updateFilmById(int filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		boolean updatedFilm = dao.updateFilmById(filmId);
 		mv.addObject("succeeded", updatedFilm); // "succeeded" is variable to check in the view file
-		mv.setViewName("filmDeleteResult");
+		mv.setViewName("redirect:filmUpdated.do");
 		return mv;
 	}
 
-//	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
-//	public String filmUpdatedView() {
-//		return "filmDeleteResult"; // TODO: ***!!Change this if using a new jsp file to display updated film
-//								// result!!****
-//	}
+	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
+	public String filmUpdatedView() {
+		return "filmUpdateResult"; // TODO: ***!!Change this if using a new jsp file to display updated film
+								// result!!****
+	}
 
 }
