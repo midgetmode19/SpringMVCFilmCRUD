@@ -75,8 +75,8 @@
 	
 			</p>
 			<form action="removeFilm.do" method="POST">
-				To delete this film type the film ID:<input type="text"
-					name="filmId">
+				Delete the film:<input type="text"
+					name="filmId" value="${film.id}">
 				<button type="submit" class="btn btn-primary btn-sm" value="Submit">Delete
 					This Film</button>
 			</form>
