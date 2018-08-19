@@ -44,7 +44,7 @@
 		Description<br> <input type="text" name="description" /> <br>
 		Release Year<br> <input type="text" name="releaseYear" /> <select
 			class="custom-select" name="languageID">
-			<option selected>Language Id</option>
+			<!-- <option selected>Language Id</option> -->
 			<option value="1">English</option>
 			<option value="2">Italian</option>
 			<option value="3">Japanese</option>
