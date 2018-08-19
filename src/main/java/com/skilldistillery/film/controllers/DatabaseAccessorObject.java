@@ -277,9 +277,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? "
-					+ " WHERE id=?"; // language ID may cause an error? Set this using value (id) that corresponds to
-										// the language(name) in the language table
+			String sql = "UPDATE film JOIN language ON (film.language_id = language.id) "
+					+ "SET film.title=?, film.description=?, film.release_year=?, film.language_id=?, film.rental_duration=?, film.rental_rate=?, film.length=?, film.replacement_cost=?, film.rating=?, film.special_features=?, language.id=? "
+					+ " WHERE film.id=?"; 
+			// language ID may cause an error? Set this using value (id) that corresponds to
+			// the language(name) in the language table
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
@@ -292,6 +294,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecial_features());
 			stmt.setInt(11, filmId);
+			stmt.setInt(12, film.getLanguageID());
 
 			int updateCount = stmt.executeUpdate();
 
