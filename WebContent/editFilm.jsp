@@ -13,21 +13,21 @@
 </head>
 <body>
 
-		<h4>Current Film:</h4>
-		<ul>
-			<li>${film.id }</li>
-			<li>${film.title}</li>
-			<li>${film.description}</li>
-			<li>${film.releaseYear}</li>
-			<li>${film.language}</li>
-			<li>${film.rentalDuration}</li>
-			<li>${film.rentalRate}</li>
-			<li>${film.length}</li>
-			<li>${film.replacementCost}</li>
-			<li>${film.rating}</li>
-			<li>${film.specialFeatures}</li>
-		</ul>
-		
+	<h4>Current Film:</h4>
+	<ul>
+		<li>${film.id }</li>
+		<li>${film.title}</li>
+		<li>${film.description}</li>
+		<li>${film.releaseYear}</li>
+		<li>${film.language}</li>
+		<li>${film.rentalDuration}</li>
+		<li>${film.rentalRate}</li>
+		<li>${film.length}</li>
+		<li>${film.replacementCost}</li>
+		<li>${film.rating}</li>
+		<li>${film.specialFeatures}</li>
+	</ul>
+
 	<form action="editFilm.do" method="POST">
 
 		<h4>Update Fields:</h4>

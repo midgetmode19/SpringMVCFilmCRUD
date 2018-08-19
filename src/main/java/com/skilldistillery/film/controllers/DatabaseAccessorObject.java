@@ -161,8 +161,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			String sql = "SELECT film.title, film.description, film.release_year, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.special_features, film.rating, language.name, film.id "
-					+ "FROM film JOIN language ON film.language_id = language.id "
-					+ "WHERE film.title LIKE ?"
+					+ "FROM film JOIN language ON film.language_id = language.id " + "WHERE film.title LIKE ?"
 					+ " OR film.description LIKE ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%" + keyWord + "%");
@@ -263,6 +262,48 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				try {
 					conn.rollback();
 				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
+	public boolean updateFilmById(int filmId) {
+		Connection conn = null;
+		Film film = getFilmById(filmId); // Gets the film to be updated using ID user inputs
+
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false);
+			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? "
+					+ " WHERE id=?"; // language ID may cause an error? Set this using value (id) that corresponds to
+										// the language(name) in the language table
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, film.getLanguageID());
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRentalRate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacementCost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecial_features());
+			stmt.setInt(11, filmId);
+
+			int updateCount = stmt.executeUpdate();
+
+			conn.commit();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
 					System.err.println("Error trying to rollback");
 				}
 			}

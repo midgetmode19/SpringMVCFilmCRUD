@@ -13,14 +13,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.film.entities.DatabaseAccessor;
 import com.skilldistillery.film.entities.Film;
 
-
-
 @Controller
 public class FilmControllers {
 
 	@Autowired
 	private DatabaseAccessor dao;
-	
+
 //	public DatabaseAccessor getDAO() {
 //		return dao;
 //	}
@@ -37,6 +35,7 @@ public class FilmControllers {
 		mv.setViewName("result");
 		return mv;
 	}
+
 	@RequestMapping(path = "AddFilm.do", method = RequestMethod.POST)
 	public ModelAndView addFilmToDatabase(Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
@@ -45,22 +44,23 @@ public class FilmControllers {
 		mv.setViewName("redirect:filmAdded.do"); // redirect to new mapping
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "filmAdded.do", // mapping to handle Redirect
 			method = RequestMethod.GET)
 	public String filmView() {
 		return "filmAddResult";
 	}
-	
+
 	@RequestMapping(path = "removeFilm.do", params = "filmId", method = RequestMethod.POST)
-	public ModelAndView removeFilmById (int filmId, RedirectAttributes redir) {
+	public ModelAndView removeFilmById(int filmId) {
 		ModelAndView mv = new ModelAndView();
 		boolean deletedFilm = dao.deleteFilmById(filmId);
 		mv.addObject("succeeded", deletedFilm);
 		mv.setViewName("filmDeleteResult");
 		return mv;
 	}
-	@RequestMapping(path = "findFilmByKeyword.do", params ="keyWord", method = RequestMethod.GET)
+
+	@RequestMapping(path = "findFilmByKeyword.do", params = "keyWord", method = RequestMethod.GET)
 	public ModelAndView getFilmsByKeyword(String keyWord) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> films = dao.getFilmsBySearchKeyWord(keyWord);
@@ -69,5 +69,19 @@ public class FilmControllers {
 		return mv;
 	}
 
+	@RequestMapping(path = "updateFilm.do", params = "filmId", method = RequestMethod.POST)
+	public ModelAndView updateFilmId(int filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		boolean updatedFilm = dao.updateFilmById(filmId);
+		mv.addObject("succeeded", updatedFilm); // "succeeded" is variable to check in the view file
+		mv.setViewName("redirect:filmUpdated.do");
+		return mv;
+	}
+
+	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
+	public String filmUpdatedView() {
+		return "filmAddResult"; // TODO: ***!!Change this if using a new jsp file to display updated film
+								// result!!****
+	}
 
 }
