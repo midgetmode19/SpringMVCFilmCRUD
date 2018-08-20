@@ -6,11 +6,27 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>Update the Film Details: </title>
+<title>Edit Film</title>
+
 </head>
 <body>
+<input type="hidden" name="filmId" value="${film.id}">
+	<h4>Current Film: ${film }</h4>
+	<ul>
+		<li>${film.id }</li>
+		<li>${film.title}</li>
+		<li>${film.description}</li>
+		<li>${film.releaseYear}</li>
+		<li>${film.language}</li>
+		<li>${film.rentalDuration}</li>
+		<li>${film.rentalRate}</li>
+		<li>${film.length}</li>
+		<li>${film.replacementCost}</li>
+		<li>${film.rating}</li>
+		<li>${film.specialFeatures}</li>
+	</ul>
+
 	<form action="editFilm.do" method="POST">
-	
 
 		<h4>Update Fields:</h4>
 		<br>New Title<br> <input type="text" name="title" /> <br>
