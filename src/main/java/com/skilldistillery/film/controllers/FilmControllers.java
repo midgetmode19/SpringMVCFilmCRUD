@@ -73,7 +73,7 @@ public class FilmControllers {
 	public ModelAndView updateFilmById(Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		boolean updatedFilm = dao.updateFilmById(film);
-		mv.addObject("succeeded", updatedFilm); // "succeeded" is variable to check in the view file
+		mv.addObject("success", updatedFilm); // "succeeded" is variable to check in the view file
 		mv.setViewName("redirect:filmUpdated.do");
 		return mv;
 	}
