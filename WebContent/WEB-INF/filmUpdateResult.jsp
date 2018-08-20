@@ -15,12 +15,11 @@
 </head>
 <body>
 	<c:if test="${success == true}">
-		<p>Failed to update film</p>
-	</c:if>
-	<c:if test="${success != true}">
-
-		<p>Film successfully updated</p>
-	</c:if>
+        <p>Film successfully updated</p>
+    </c:if>
+    <c:if test="${success != true}">
+        <p>Failed to update film</p>
+    </c:if>
 
 	<a href="index.html">Return to Main Menu</a>
 
