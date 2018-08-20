@@ -78,8 +78,7 @@ public class Film {
 	}
 
 	public Film(int id, String title, String description, int releaseYear, String language, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			 List<Actor> actors) {
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, String categories,List<Actor> actors) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -91,9 +90,11 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-//		this.categories = categories;
+		this.categories = categories;
 		this.actors = actors;
 	}
+
+	
 
 	public String getCategories() {
 		return categories;
