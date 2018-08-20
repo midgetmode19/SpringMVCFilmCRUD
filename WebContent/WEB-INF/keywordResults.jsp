@@ -16,21 +16,22 @@
 	<c:choose>
 		<c:when test="${! empty films}">
 			<ul>
-				<c:forEach var="f" items="${films }">
-					<li>${f }</li>
+				<c:forEach var="film" items="${films }">
+					<li>${film }</li>
 					
 					<form action="removeFilm.do" method="POST">
 				<strong>Delete Film:</strong><input type="text"
-					name="filmId" value="${f.id }">
+					name="filmId" value="${film.id }">
 					
 				<button type="submit" class="btn btn-primary btn-sm" value="Submit">Delete
 					</button>
 					<br>
 					<br>
 					</form>
-			<form action="editFilm.jsp" method="POST">
+			<form action="findFilm.do" method="GET">
+			<input type="hidden" name="filmId" value="${film.id}">
 			<strong>Edit Film:</strong><input type="text"
-					name="filmId" value="${f.id }">
+					name="filmId" value="${film.id }">
 				<button type="submit" class="btn btn-primary btn-sm" value="Submit">Go</button>
 				<br>
 			</form>
