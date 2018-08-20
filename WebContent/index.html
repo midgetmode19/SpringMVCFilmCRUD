@@ -9,16 +9,37 @@
 <title>Film Query</title>
 </head>
 <body>
-	<a href="searchByFilmIdForm.html" class="badge badge-primary">Search
-		For a Film By ID</a>
-	<br />
-	<a href="addNewFilmForm.html" class="badge badge-primary">Add a new
-		Film</a>
-	<br />
-	<a href="searchByKeyword.html" class="badge badge-primary">Search
-		Using a Keyword</a>
-	<br />
-	
+	<div class="container">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<form action="searchByFilmIdForm.jsp" method="POST">
+
+					<a class="btn btn-primary btn-lg btn-block"
+						href="searchByFilmIdForm.jsp" role="button">Search For a Film
+						By ID</a>
+				</form>
+				<br />
+				<form action="addNewFilmForm.jsp" method="POST">
+					<a class="btn btn-primary btn-lg btn-block"
+						href="addNewFilmForm.jsp" role="button">Add a new Film</a>
+
+				</form>
+
+				<br />
+				<form action="searchByKeyword.jsp" method="POST">
+					<a class="btn btn-primary btn-lg btn-block"
+						href="searchByKeyword.jsp" role="button">Search Using a
+						Keyword</a>
+
+				</form>
+
+			</div>
+			<div class="col"></div>
+
+		</div>
+	</div>
+
 
 </body>
 </html>

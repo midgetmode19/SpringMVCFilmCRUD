@@ -9,34 +9,17 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>Edit Film</title>
-
+<title>Add New Film</title>
 </head>
 <body>
-<input type="hidden" name="filmId" value="${film.id}">
-	<h4>Current Film: ${film }</h4>
-	<ul>
-		<li>${film.id }</li>
-		<li>${film.title}</li>
-		<li>${film.description}</li>
-		<li>${film.releaseYear}</li>
-		<li>${film.language}</li>
-		<li>${film.rentalDuration}</li>
-		<li>${film.rentalRate}</li>
-		<li>${film.length}</li>
-		<li>${film.replacementCost}</li>
-		<li>${film.rating}</li>
-		<li>${film.specialFeatures}</li>
-	</ul>
+	<form action="AddFilm.do" method="POST">
 
-	<form action="editFilm.do" method="POST">
-	<input type="hidden" name="filmId" value="${film.id}">
-		<h4>Update Fields:</h4>
-		<br>Enter a valid film Id:<br> <input type="text" name="filmId" /> <br>
-		<br>New Title<br> <input type="text" name="title" /> <br>
-		Description<br> <input type="text" name="description" /> <br>
-		Release Year<br> <input type="text" name="releaseYear" /> <select
-			class="custom-select" name="languageID">
+		<br> Title<br>
+		<input type="text" name="title" value="Joe"/> <br> Description<br>
+		<input type="text" name="description" value="Dirt"/> <br> Release Year<br>
+		<input type="text" name="releaseYear" value="1999"/> 
+		 
+		<select class="custom-select" name="languageID">
 			<option selected>Language Id</option>
 			<option value="1">English</option>
 			<option value="2">Italian</option>
@@ -44,8 +27,10 @@
 			<option value="4">Mandarin</option>
 			<option value="5">French</option>
 			<option value="6">German</option>
-		</select> <br> Rental Duration<br> <select class="custom-select"
-			name="rentalDuration">
+		</select> <br> Rental Duration<br>
+		 
+		<select
+			class="custom-select" name="rentalDuration">
 			<option selected>Rental Duration</option>
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -54,24 +39,26 @@
 			<option value="5">5</option>
 			<option value="6">6</option>
 			<option value="7">7</option>
-		</select> <br> Rental Rate<br> <select class="custom-select"
-			name="rentalRate">
+		</select> <br> Rental Rate<br>
+		<select class="custom-select" name="rentalRate">
 			<option selected>Rental Rate</option>
 			<option value="0.99">$0.99</option>
 			<option value="2.99">$2.99</option>
 			<option value="4.99">$4.99</option>
-		</select> <br> Film Length (in minutes)<br> <input type="text"
-			name="length" /> <br> Replacement Cost<br> <input
-			type="text" name="replacementCost" /> <br> Rating(G, PG,PG-13,
-		R, NC-17)<br> <input type="text" name="rating" /><br> <br>
-		Special Features<br> <select class="custom-select"
-			name="specialFeatures">
+		</select> <br>Film Length (in minutes)<br>
+		<input type="text" name="length" value="120"/> <br>Replacement Cost<br>
+		<input type="text" name="replacementCost" value="7.99"/> <br> Rating(G, PG,
+		PG-13, R, NC-17)<br>
+		<input type="text" name="rating" value="R"/><br>
+		<br> Special Features<br>
+		<select class="custom-select" name="specialFeatures">
 			<option selected>Special Features</option>
 			<option value="Deleted Scenes">Deleted Scenes</option>
 			<option value="Behind the Scenes">Behind the Scenes</option>
 			<option value="Commentaries">Commentaries</option>
 			<option value="Trailers">Trailers</option>
-		</select> <br>
+		</select>
+		
 		<button type="submit" class="btn btn-primary btn-sm" value="Submit">Submit</button>
 	</form>
 </body>

@@ -20,14 +20,21 @@
 					<li>${f }</li>
 					
 					<form action="removeFilm.do" method="POST">
-				Enter Film Id to Delete Film:<input type="text"
+				<strong>Delete Film:</strong><input type="text"
 					name="filmId" value="${f.id }">
 					
 				<button type="submit" class="btn btn-primary btn-sm" value="Submit">Delete
-					This Film</button>
+					</button>
 					<br>
 					<br>
+					</form>
+			<form action="editFilm.jsp" method="POST">
+			<strong>Edit Film:</strong><input type="text"
+					name="filmId" value="${f.id }">
+				<button type="submit" class="btn btn-primary btn-sm" value="Submit">Go</button>
+				<br>
 			</form>
+			<br>
 				</c:forEach>
 			</ul>
 		</c:when>
