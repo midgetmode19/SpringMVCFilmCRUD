@@ -32,7 +32,7 @@
 			
 
  
-    </form>
+  
    <%-- <p>
     <form action="editFilm.jsp" method="POST" value="${film.id}"> 
 				
