@@ -23,7 +23,7 @@
 			<p><strong>Rating:</strong>  ${film.rating}</p>
 			<p><strong>Special Features:</strong>  ${film.specialFeatures}</p>
 			<p><strong>Featuring:</strong>  ${film.actors }</p>
-			<p><strong>Categories:</strong>  ${film.categories }</p>
+			
 			
 
  
@@ -81,6 +81,7 @@
 			<option value="Commentaries">Commentaries</option>
 			<option value="Trailers">Trailers</option>
 		</select> <br>
+		
 		<button type="submit" class="btn btn-primary btn-sm" value="Submit">Submit</button>
 	</form>
 	

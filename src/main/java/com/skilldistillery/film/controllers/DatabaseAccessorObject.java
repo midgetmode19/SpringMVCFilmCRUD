@@ -31,14 +31,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 //			String sql = "SELECT id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features FROM film WHERE id = ?";
-//			String sql = "SELECT film.title, film.description, film.release_year, language.name, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, film.language_id "
-//					+ "FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
+			String sql = "SELECT film.title, film.description, film.release_year, language.name, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, film.language_id "
+					+ "FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
 //			
-			String sql = "SELECT film.title, film.description, film.release_year, language.name, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, film.language_id, category.name \n" + 
-					"					FROM film JOIN language ON film.language_id = language.id\n" + 
-					"                    JOIN film_category ON film.id = film_category.film_id\n" + 
-					"                    JOIN category ON category.id = film_category.category_id\n" + 
-					"					WHERE film.id = ?;";
+//			String sql = "SELECT film.title, film.description, film.release_year, language.name, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, film.language_id, category.name \n" + 
+//					"					FROM film JOIN language ON film.language_id = language.id\n" + 
+//					"                    JOIN film_category ON film.id = film_category.film_id\n" + 
+//					"                    JOIN category ON category.id = film_category.category_id\n" + 
+//					"					WHERE film.id = ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet filmResult = stmt.executeQuery();
@@ -62,7 +62,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setRating(filmResult.getString(9));
 				film.setSpecialFeatures(filmResult.getString(10));
 				film.setLanguageID(filmResult.getShort(11));
-				film.setCategories(filmResult.getString(12));
+//				film.setCategories(filmResult.getString(12));
 
 				film.setActors(getActorsByFilmId(filmId)); // A Film has actors
 				
@@ -169,15 +169,15 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		List<Film> films = new ArrayList<>();
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-//			String sql = "SELECT film.title, film.description, film.release_year, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.special_features, film.rating, language.name, film.id "
-//					+ "FROM film JOIN language ON film.language_id = language.id " + "WHERE film.title LIKE ?"
-//					+ " OR film.description LIKE ?;";
-			String sql = "SELECT film.title, film.description, film.release_year, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.special_features, film.rating, language.name, film.id, category.name \n" + 
-					"					FROM film JOIN language ON film.language_id = language.id\n" + 
-					"                    JOIN film_category ON film.id = film_category.film_id\n" + 
-					"                    JOIN category ON category.id = film_category.category_id\n" + 
-					"                    WHERE film.title LIKE ?\n" + 
-					"					 OR film.description LIKE ?;";
+			String sql = "SELECT film.title, film.description, film.release_year, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.special_features, film.rating, language.name, film.id "
+					+ "FROM film JOIN language ON film.language_id = language.id " + "WHERE film.title LIKE ?"
+					+ " OR film.description LIKE ?;";
+//			String sql = "SELECT film.title, film.description, film.release_year, film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.special_features, film.rating, language.name, film.id, category.name \n" + 
+//					"					FROM film JOIN language ON film.language_id = language.id\n" + 
+//					"                    JOIN film_category ON film.id = film_category.film_id\n" + 
+//					"                    JOIN category ON category.id = film_category.category_id\n" + 
+//					"                    WHERE film.title LIKE ?\n" + 
+//					"					 OR film.description LIKE ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%" + keyWord + "%");
 			stmt.setString(2, "%" + keyWord + "%");
@@ -194,10 +194,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String rating = rs.getString(9);
 				String language = rs.getString(10);
 				int filmId = rs.getInt(11);
-				String categories = rs.getString(12);
+//				String categories = rs.getString(12);
 				List<Actor> actors = getActorsByFilmId(filmId); // use this when need to display actors
 				Film film = new Film(filmId, title, desc, releaseYear, language, rentalDuration, rentalRate, length,
-						replacementCost, rating, specialFeatures, categories, actors);
+						replacementCost, rating, specialFeatures, actors);
 				films.add(film);
 			}
 			rs.close();
@@ -289,16 +289,15 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public boolean updateFilmById(int filmId) {
 		Connection conn = null;
 		Film film = getFilmById(filmId);
-		// Gets the film to be updated using ID user inputs
 
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film JOIN language ON (film.language_id = language.id) "
 					+ "SET film.title=?, film.description=?, film.release_year=?, film.language_id=?, film.rental_duration=?, film.rental_rate=?, film.length=?, film.replacement_cost=?, film.rating=?, film.special_features=? "
+
 					+ " WHERE film.id=?";
-			// language ID may cause an error? Set this using value (id) that corresponds to
-			// the language(name) in the language table
+
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
@@ -310,7 +309,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecial_features());
-			stmt.setInt(11, filmId);
+			stmt.setInt(11, film.getId());
 
 			int updateCount = stmt.executeUpdate();
 
@@ -329,7 +328,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			return false;
 		}
 		return true;
+
+
 	}
+
 
 }
 
