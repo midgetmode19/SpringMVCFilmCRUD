@@ -69,15 +69,14 @@ public class FilmControllers {
 		return mv;
 	}
 
-	@RequestMapping(path = "editFilm.do", params = "film", method = RequestMethod.POST)
-	public ModelAndView updateFilmById(Film film, RedirectAttributes redir) {
+	@RequestMapping(path = "editFilm.do", params = "filmId", method = RequestMethod.POST)
+	public ModelAndView updateFilmById(int filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		boolean updatedFilm = dao.updateFilmById(film);
+		boolean updatedFilm = dao.updateFilmById(filmId);
 		mv.addObject("succeeded", updatedFilm); // "succeeded" is variable to check in the view file
 		mv.setViewName("redirect:filmUpdated.do");
 		return mv;
 	}
-
 
 	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
 	public String filmUpdatedView() {
