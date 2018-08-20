@@ -45,7 +45,7 @@
 			<p>
 				<form action="editFilm.do" method="POST"> 
 				
-				<input type="hidden" name="filmId" value="${film.id}">
+				<input type="hidden" name="id" value="${film.id}">
 				<h4>Update Fields:</h4>
 		<br>New Title<br> <input type="text" name="title" /> <br>
 		Description<br> <input type="text" name="description" /> <br>

@@ -21,5 +21,5 @@ public interface DatabaseAccessor {
 
 	public boolean deleteFilmById(int filmId);
 
-	public boolean updateFilmById(int filmId);
+	public boolean updateFilmById(Film film);
 }
