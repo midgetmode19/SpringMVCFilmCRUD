@@ -16,6 +16,7 @@ public class Film {
 	private String specialFeatures;
 	private String language;
 	private List<Actor> actors;
+	private String categories;
 
 	public Film() {
 		super();
@@ -78,7 +79,7 @@ public class Film {
 
 	public Film(int id, String title, String description, int releaseYear, String language, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			List<Actor> actors) {
+			 String categories, List<Actor> actors) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -90,7 +91,16 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
+		this.categories = categories;
 		this.actors = actors;
+	}
+
+	public String getCategories() {
+		return categories;
+	}
+
+	public void setCategories(String categories) {
+		this.categories = categories;
 	}
 
 	public String getLanguage() {
@@ -198,7 +208,7 @@ public class Film {
 		return " Title: " + title + " | Description: " + description + " | ReleaseYear:" + releaseYear + " | Rating: "
 				+ rating + " | Language: " + language + " | Length: " + length + " | Special Features: "
 				+ specialFeatures + " | Rental Duration: " + rentalDuration + " | Rental Rate: $" + rentalRate
-				+ " | Replacement Cost: $" + replacementCost + "\nFeaturing: " + actors + " | ****************\n";
+				+ " | Replacement Cost: $" + replacementCost + "\nFeaturing: " + actors + " \nCategories: " + categories + " | ****************\n";
 	}
 
 	@Override

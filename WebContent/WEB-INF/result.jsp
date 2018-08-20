@@ -11,17 +11,19 @@
 <body>
 	<c:choose>
 		<c:when test="${! empty film}">
-			<p><strong>Film Id:</strong> ${film.id }</p>
-			<p><strong>Title:</strong> ${film.title}</p>
-			<p><strong>Description:</strong> ${film.description}</p>
-			<p><strong>Release Year:</strong> ${film.releaseYear}</p>
-			<p><strong>Language:</strong> ${film.language}</p>
-			<p><strong>Rental Duration:</strong> ${film.rentalDuration}</p>
-			<p><strong>Rental Rate:</strong> ${film.rentalRate}</p>
-			<p><strong>Length:</strong> ${film.length}</p>
-			<p><strong>Replacement Cost:</strong> ${film.replacementCost}</p>
-			<p><strong>Rating:</strong> ${film.rating}</p>
-			<p><strong>Special Features:</strong> ${film.specialFeatures}</p>
+			<p><strong>Film Id:</strong>  ${film.id }</p>
+			<p><strong>Title:</strong>  ${film.title}</p>
+			<p><strong>Description:</strong>  ${film.description}</p>
+			<p><strong>Release Year:</strong>  ${film.releaseYear}</p>
+			<p><strong>Language:</strong>  ${film.language}</p>
+			<p><strong>Rental Duration:</strong>  ${film.rentalDuration}</p>
+			<p><strong>Rental Rate:</strong>  ${film.rentalRate}</p>
+			<p><strong>Length:</strong>  ${film.length}</p>
+			<p><strong>Replacement Cost:</strong>  ${film.replacementCost}</p>
+			<p><strong>Rating:</strong>  ${film.rating}</p>
+			<p><strong>Special Features:</strong>  ${film.specialFeatures}</p>
+			<p><strong>Featuring:</strong>  ${film.actors }</p>
+			<p><strong>Categories:</strong>  ${film.categories }</p>
 			
 
  
