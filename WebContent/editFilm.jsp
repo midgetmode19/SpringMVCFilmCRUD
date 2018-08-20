@@ -30,7 +30,7 @@
 	</ul>
 
 	<form action="editFilm.do" method="POST">
-	<input type="hidden" name="filmId" value="${film.id}">
+	<input type="hidden" name="id" value="${film.id}">
 		<h4>Update Fields:</h4>
 		<br>Enter a valid film Id:<br> <input type="text" name="filmId" /> <br>
 		<br>New Title<br> <input type="text" name="title" /> <br>

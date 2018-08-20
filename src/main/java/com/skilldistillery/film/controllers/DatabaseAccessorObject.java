@@ -287,9 +287,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 	
 
-	public boolean updateFilmById(int filmId) {
+	public boolean updateFilmById(Film film) {
 		Connection conn = null;
-		Film film = getFilmById(filmId);
 
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
@@ -298,7 +297,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					+ "SET film.title=?, film.description=?, film.release_year=?, film.language_id=?, film.rental_duration=?, film.rental_rate=?, film.length=?, film.replacement_cost=?, film.rating=?, film.special_features=? "
 
 					+ " WHERE film.id=?";
-
+System.out.println(film);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
